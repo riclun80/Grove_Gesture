@@ -4,19 +4,19 @@ triggers:
   - trigger: state
     entity_id:
       - sensor.gesture_sensor
+    from:
+      - 5-finger
     to:
       - Grab
     id: Grab
-    from:
-      - 5-finger
   - trigger: state
     entity_id:
       - sensor.gesture_sensor
+    from:
+      - 2-finger
     to:
       - Pinch
     id: Pinch
-    from:
-      - 2-finger
 conditions:
 actions:
   - choose:
