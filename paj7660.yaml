@@ -15,7 +15,7 @@ external_components:
 i2c:
   scl: GPIO5
   sda: GPIO4
-  scan: true #false
+  scan: true
   frequency: 200kHz
   id: i2c_bus
 
