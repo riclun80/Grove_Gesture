@@ -10,7 +10,7 @@ It has 2 IR LED's, so it recognises gestures in complete darkness!<br>
 This code utilises the I2C interface and can recognize 17 types of gestures, such as:<br> 
 Static finger 1 to 5, Push finger 1 to 5, Clockwise rotation, Counter-clockwise rotation, Swipe Left, Swipe Right, Tap, Grab, Pinch.
 
-**Installation**<br>
+**Setup**<br>
 Place the files in the ESPHome folder so the component files end up under \esphome\components\pag7660v2<br>
 Add the lines from "paj7660.yaml" in your devices config to get a "text sensor" with the last **gesture** and a "sensor" with **rotation step**.<br>
 In "home assistant automation.yaml" you find example automation that I utilizes for my device installed in my bedroom projector clock.<br>
