@@ -12,8 +12,38 @@ Static finger 1 to 5, Push finger 1 to 5, Clockwise rotation, Counter-clockwise 
 
 **Setup**<br>
 Place the files in the ESPHome folder so the component files end up under \esphome\components\pag7660v2<br>
-Add the lines from "paj7660.yaml" in your devices config to get a "text sensor" with the last **gesture** and a "sensor" with **rotation step**.<br>
-In "home assistant automation.yaml" you find example automation that I utilizes for my device installed in my bedroom projector clock.<br>
+Add the lines in your device's config to get a "text sensor" with the last **gesture** and a "sensor" with **rotation step**.<br>
+```
+external_components:
+  - source:
+      type: local
+      path: components
+
+i2c:
+  scl: GPIO5 # Change for your setup
+  sda: GPIO4 # Change for your setup
+  scan: true
+  frequency: 200kHz
+  id: i2c_bus
+
+pag7660v2:
+  id: my_gesture_sensor
+  address: 0x68
+  i2c_id: i2c_bus
+
+text_sensor:
+  - platform: pag7660v2
+    gesture:
+      name: "Gesture Sensor"
+      
+sensor:
+  - platform: pag7660v2
+    rotation:
+      name: "Gesture Rotation Step"
+      unit_of_measurement: "°"
+```
+
+In [home assistant automation.yaml](https://github.com/riclun80/Grove_Gesture_PAJ7660_ESPhome/blob/master/home%20assistant%20automation.yaml) you find an example automation that I utilise for my device installed in my bedroom projector clock.<br>
 
 For more information about the sensor, please visit the [wiki](https://wiki.seeedstudio.com/grove_gesture_paj7660/).
 
