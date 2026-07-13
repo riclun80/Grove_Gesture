@@ -1,17 +1,19 @@
-# Grove Gesture  [![Build Status](https://travis-ci.com/Seeed-Studio/Gesture_PAJ7620.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Gesture_PAJ7620)
+# Grove Smart IR Gesture Sensor (PAJ7660) for ESPHome
 
-<img src=https://statics3.seeedstudio.com/seeed/img/2016-08/5dxWtS1rxWLzukUaHBvGoIG9.jpg width=300><img src=https://statics3.seeedstudio.com/seeed/img/2016-08/3EmTCa2USbPnqZszQNngy8ss.jpg width=300>
+<img src=https://files.seeedstudio.com/wiki/grove-gesture-paj7620/main.jpg width=300>
 
-[Grove - Gesture（PAJ7620U2)](https://www.seeedstudio.com/s/Grove-Gesture（PAJ7620U2）-p-2463.html)
+[Grove - Gesture（PAJ7660)](https://www.seeedstudio.com/s/Grove-Gesture（PAJ7620U2）-p-2463.html)
 
 **Description**
 
-The sensor on Grove - Gesture is PAJ7620U2 that integrates gesture recognition function with general I2C interface into a single chip. It can recognize 9 gestures including move up, move down, move left, move right, etc with a simple swipe of your hand.
-For more information please visit the [wiki](http://wiki.seeedstudio.com/Grove-Gesture_v1.0/).
+The sensor on Grove Smart IR Gesture Sensor (PAJ7660) that integrates gesture recognition function with general I2C interface into a single chip. It can recognize 15 gestures including Static Finger,
+Push, Rotate, Tap, Pinch, Grab, Swipe.
+
+For more information please visit the [wiki](https://wiki.seeedstudio.com/grove_gesture_paj7660/).
 
 
 ---
-This software is written by Jack Wu for seeed studio<br>
+This software is written by Jack Wu for seeed studio and modified for ESPHome<br>
 and is licensed under [The MIT License](http://opensource.org/licenses/mit-license.php). Check LICENSE for more information.<br>
 
 Contributing to this software is warmly welcomed. You can do this basically by<br>
