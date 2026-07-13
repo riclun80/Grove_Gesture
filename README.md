@@ -10,7 +10,7 @@ It has 2 IR LED's, so it recognises gestures in complete darkness!<br>
 This code utilises the I2C interface and can recognise 17 types of gestures, such as:<br> 
 Static finger 1 to 5, Push finger 1 to 5, Clockwise rotation, Counter-clockwise rotation, Swipe Left, Swipe Right, Tap, Grab, Pinch.
 
-**Setup**<br>
+**Device setup**<br>
 Place the files in the ESPHome folder so the component files end up under \esphome\components\pag7660v2<br>
 Add the lines in your device's config to get a "text sensor" with the last **gesture** and a "sensor" with **rotation step**.<br>
 ```
