@@ -6,7 +6,7 @@
 
 **Description**
 
-The sensor on the Grove Smart IR Gesture Sensor (PAJ7660) integrates a gesture recognition function with a general I2C/SPI/USB interface into a single chip. This code utilises the I2C interface.
+The sensor on the Grove Smart IR Gesture Sensor (PAJ7660/PAG7660) integrates a gesture recognition function with a general I2C/SPI/USB interface into a single chip. This code utilises the I2C interface.
 It can recognise 15 gestures, including Static Finger, Push, Rotate, Tap, Pinch, Grab, and Swipe.
 It has 2 IR LED's, so it recognises gestures in complete darkness!
 
