@@ -13,7 +13,8 @@ Static finger 1 to 5, Push finger 1 to 5, Clockwise rotation, Counter-clockwise 
 
 **Installation**<br>
 Place the files in the ESPHome folder so the component files end up under \esphome\components\pag7660v2<br>
-Add the lines from paj7660.yaml in your ESP devices config YAML to get a "text sensor" with the last **gesture** and a "sensor" with **rotation step**.
+Add the lines from "paj7660.yaml" in your devices config to get a "text sensor" with the last **gesture** and a "sensor" with **rotation step**.<br>
+In "home assistant automation.yaml" you find example automation that I utilizes for my device installed in my bed projector clock.<br>
 
 For more information about the sensor, please visit the [wiki](https://wiki.seeedstudio.com/grove_gesture_paj7660/).
 
