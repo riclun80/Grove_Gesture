@@ -10,8 +10,8 @@ The sensor on the Grove Smart IR Gesture Sensor (PAJ7660) integrates a gesture r
 It can recognise 15 gestures, including Static Finger, Push, Rotate, Tap, Pinch, Grab, and Swipe.
 It has 2 IR LED's, so it recognises gestures in complete darkness!
 
-Place the files in the ESPHome folder in the Home Assistant config directory so the component files end up under \esphome\components\pag7660v2
-Add the lines in your ESP devices YAML to get a "text sensor" with the last gesture and a "sensor" with rotation step.
+Place the files in the ESPHome folder so the component files end up under \esphome\components\pag7660v2<br>
+Add the lines from paj7660.yaml in your ESP devices YAML to get a "text sensor" with the last **gesture** and a "sensor" with **rotation step**.
 
 For more information, please visit the [wiki](https://wiki.seeedstudio.com/grove_gesture_paj7660/).
 
