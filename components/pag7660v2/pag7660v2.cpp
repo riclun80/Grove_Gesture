@@ -24,11 +24,11 @@ void PAG7660V2Component::setup() {
   }
 
   this->write_byte(0x10, 0x04);
-  delay(10);
-  this->write_byte(0x22, 0x05); // Default Mode: Combined Mode[cite: 3, 5]
-  delay(10);
-  this->write_byte(0x0A, 0x01); // Enable Core[cite: 1]
-  delay(250);
+  esphome::delay(10);
+  this->write_byte(0x22, 0x05); // Default Mode: Combined Mode
+  esphome::delay(10);
+  this->write_byte(0x0A, 0x01); // Enable Core
+  esphome::delay(250);
 
   ESP_LOGI(TAG, "PAG7660v2 Component initialized successfully!");
 }
@@ -36,67 +36,88 @@ void PAG7660V2Component::setup() {
 void PAG7660V2Component::loop() {
   uint8_t ready_flag;
   if (!this->read_byte(0x04, &ready_flag) || !(ready_flag & 0x02)) {
-    return; // Frame output not available[cite: 1]
+    return; // Frame output not available
   }
 
   pag7660_reg_out_t raw_data;
-  if (this->read_bytes(0x3C, (uint8_t *)&raw_data,
-                       sizeof(raw_data))) { //[cite: 1]
+  if (this->read_bytes(0x3C, (uint8_t *)&raw_data, sizeof(raw_data))) {
     this->process_gesture(raw_data);
   }
 
-  this->write_byte(0x04, 0x00); // Clear data interrupt ready states[cite: 1]
+  this->write_byte(0x04, 0x00); // Clear data interrupt ready states
 }
 
 void PAG7660V2Component::process_gesture(const pag7660_reg_out_t &reg) {
-  uint8_t type = reg.result.ges.gesture_type;       //[cite: 1]
-  int16_t rotate = reg.result.ang_acc;              //[cite: 1]
-  uint8_t cursor_type = reg.result.ges.cursor_type; //[cite: 1]
-  bool select = reg.result.ges.select;              //[cite: 1]
+  uint8_t type = reg.result.ges.gesture_type;
+  int16_t rotate = reg.result.ang_acc;
+  uint8_t cursor_type = reg.result.ges.cursor_type;
+  bool select = reg.result.ges.select;
 
   std::string gesture_name = "";
 
   switch (type) {
   case 0:
-    if (select) { //[cite: 5]
+    if (select) {
       if (cursor_type == 1)
-        gesture_name = "Tap"; //[cite: 5]
+        gesture_name = "Tap";
       else if (cursor_type == 2)
-        gesture_name = "Grab"; //[cite: 5]
+        gesture_name = "Grab";
       else if (cursor_type == 3)
-        gesture_name = "Pinch"; //[cite: 5]
+        gesture_name = "Pinch";
     }
     break;
+
+  // Static mapping to prevent runtime exceptions
   case 1:
-  case 2:
-  case 3:
-  case 4:
-  case 5:
-    gesture_name = std::to_string(type) + "-finger"; //[cite: 5]
+    gesture_name = "1-finger";
     break;
+  case 2:
+    gesture_name = "2-finger";
+    break;
+  case 3:
+    gesture_name = "3-finger";
+    break;
+  case 4:
+    gesture_name = "4-finger";
+    break;
+  case 5:
+    gesture_name = "5-finger";
+    break;
+
   case 6:
-    gesture_name = "Rotate Right"; //[cite: 5]
+    gesture_name = "Rotate Right";
     if (this->rotation_sensor_ != nullptr)
       this->rotation_sensor_->publish_state(rotate);
     break;
   case 7:
-    gesture_name = "Rotate Left"; //[cite: 5]
+    gesture_name = "Rotate Left";
     if (this->rotation_sensor_ != nullptr)
       this->rotation_sensor_->publish_state(rotate);
     break;
   case 8:
-    gesture_name = "Swipe Left"; //[cite: 5]
+    gesture_name = "Swipe Left";
     break;
   case 9:
-    gesture_name = "Swipe Right"; //[cite: 5]
+    gesture_name = "Swipe Right";
     break;
+
+  // Static mapping for multi-finger push actions
   case 19:
-  case 20:
-  case 21:
-  case 22:
-  case 23:
-    gesture_name = std::to_string(type - 19 + 1) + "-finger push"; //[cite: 5]
+    gesture_name = "1-finger push";
     break;
+  case 20:
+    gesture_name = "2-finger push";
+    break;
+  case 21:
+    gesture_name = "3-finger push";
+    break;
+  case 22:
+    gesture_name = "4-finger push";
+    break;
+  case 23:
+    gesture_name = "5-finger push";
+    break;
+
   default:
     break;
   }
